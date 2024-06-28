@@ -1,0 +1,21 @@
+package com.company;
+import java.util.*;
+//Array list program.
+public class Main {
+    public static void main(String[] args) {
+        ArrayList <String> language=new ArrayList <String>();
+        language.add("PHP");
+        language.add("JAVA");
+        language.add("C++");
+        language.add("PYTON");
+        language.add("ORACLE");
+        System.out.println("Programming Languages: ");
+        System.out.println(language);
+        System.out.println("\nChanging member of the 2nd Index: ");
+        language.set(1, "Java Script");
+        System.out.println(language);
+        System.out.println("\nRemoving the member of the last index: ");
+        language.remove(4);
+        System.out.println(language);
+    }
+}

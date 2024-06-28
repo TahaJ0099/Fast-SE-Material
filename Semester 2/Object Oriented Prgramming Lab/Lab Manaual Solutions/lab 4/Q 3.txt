@@ -1,0 +1,58 @@
+import java.util.*;
+
+class Student{
+    int std_id;
+    String name;
+    float cgpa;
+    String department;
+
+    public Student(int StudentID, String Name, float Cgpa, String Dept  ){
+        name =Name;
+        std_id=StudentID;
+        cgpa=Cgpa;
+        department=Dept;
+    }
+    public Student(Student copy){
+        name=copy.name;
+        std_id=copy.std_id;
+        cgpa=copy.cgpa;
+        department=copy.department;
+    }
+
+    public void getName(){
+        System.out.println("Student Name:" + name);
+
+    }
+    public void getStudentID(){
+        System.out.println("Student ID:" +std_id);
+
+    }
+    public void getCgpa(){
+        System.out.println("Student CGPA:" + cgpa);
+
+    }
+    public void getDepartment(){
+        System.out.println("Student Department:" + department);
+
+    }
+    public void print(){
+        System.out.println("Student Name:" + name);
+        System.out.println("Student ID:" + std_id);
+        System.out.println("Student CGPA:" + cgpa);
+        System.out.println("Student Department:" + department);
+        System.out.println("\n");
+    }
+}
+
+
+lab Q3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student std1 = new Student(3881,"Taha", (float) 2.547,"S.E");
+        Student std2 = std1;
+        System.out.println("Student 1:");
+        std1.print();
+        std2.print();
+
+    }
+}

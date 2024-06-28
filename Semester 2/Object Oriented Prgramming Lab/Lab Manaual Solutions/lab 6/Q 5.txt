@@ -1,0 +1,81 @@
+package com.company;
+
+class Vehicle{
+    private int Sp,wh;
+    private String c;
+    public void Speed() {
+        System.out.println("keep speeding :D");
+    }
+    public void Speed(int Sp,String c,int wh) {
+        this.Sp=Sp;
+        this.c=c;
+        this.wh=wh;
+    }
+    void setSpeed(int Sp) {
+        this.Sp=Sp;
+    }
+    int getSpeed() {
+        return Sp;
+    }
+
+    void setColor(String c) {
+        this.c=c;
+    }
+    String getColor() {
+        return c;
+    }
+
+    void setNo_of_wheels(int wh) {
+        this.wh=wh;
+    }
+
+    int getNo_of_wheels() {
+        return wh;
+    }
+}
+class Motor_Vehicle extends Vehicle {
+    private String l_p;
+    public Motor_Vehicle() {
+        System.out.println("Congratulation for Motor Vehicle ");
+    }
+
+    public void setL_plate(String l_p) {
+        this.l_p=l_p;
+    }
+    String getL_plate()
+    {
+        return l_p;
+    }
+}
+class Car extends Motor_Vehicle{
+    private int d;
+    public Car()
+    {
+        System.out.println("Congratulation for the car");
+    }
+    public void setNo_of_doors(int d) {
+        this.d=d;
+    }
+    public int getNo_of_doors() {
+        return d;
+    }
+    void display() {
+        System.out.println("Doors are : " + getNo_of_doors());
+        System.out.println("Licence plate : " + getL_plate());
+        System.out.println("Speed :  " + getSpeed());
+        System.out.println("Wheels are : " +getNo_of_wheels());
+        System.out.println("Car color: " +getColor());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car c1 = new Car();
+        c1.setColor("White");
+        c1.setSpeed(70);
+        c1.setNo_of_wheels(4);
+        c1.setNo_of_doors(4);
+        c1.setL_plate("ABC-1234");
+        c1.display();
+    }
+}

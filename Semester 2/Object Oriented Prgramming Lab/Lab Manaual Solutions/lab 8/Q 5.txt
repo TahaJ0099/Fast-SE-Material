@@ -1,0 +1,31 @@
+package com.company;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Cats c1 = new Cats();
+        Dogs d1 = new Dogs();
+        c1.cats();
+        d1.dogs();
+    }
+}
+abstract class animals{
+    abstract public void cats();
+    abstract public void dogs();
+}
+class Cats extends animals{
+    @Override
+    public void cats() {
+        System.out.println("Cats meow");
+    }
+    @Override
+    public void dogs() {}
+}
+class Dogs extends animals{
+    @Override
+   public void dogs(){
+        System.out.println("Dogs Bark");
+    }
+    @Override
+    public void cats() {}
+}

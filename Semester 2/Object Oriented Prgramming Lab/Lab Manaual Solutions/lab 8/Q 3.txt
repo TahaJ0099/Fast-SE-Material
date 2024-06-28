@@ -1,0 +1,63 @@
+package com.company;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner t = new Scanner(System.in);
+        int [] m = new int[3];
+        for(int x=0;x<3;x++) {
+
+            System.out.println("Enter marks of "+(x+1)+" subject : ");
+            m[x]=t.nextInt();
+        }
+
+        subclass_A q1 = new subclass_A();
+        subclass_B w1 = new subclass_B();
+        System.out.println("Percentage of A is :"+q1.get_percentage(m));
+        System.out.println("Percentage of B is :"+w1.get_percentage(m));
+
+    }
+}
+abstract class Marks{
+    abstract float get_percentage(int m[]);
+}
+
+class subclass_A extends Marks{
+    int m[]=new int [3];
+
+    subclass_A() {}
+    subclass_A(int m[]){
+        for(int x=0;x<3;x++) {
+            this.m[x]=m[x];
+        }
+    }
+    @Override
+    float get_percentage(int m[]) {
+        int per=0, total=0;
+
+        for(int x=0;x<3;x++) {
+            total+=m[x];
+        }
+        return ((total*100)/300);
+    }
+}
+class subclass_B extends Marks{
+    int m[]=new int [3];
+
+    subclass_B() {}
+    subclass_B(int m[]){
+        for(int x=0;x<3;x++) {
+            this.m[x]=m[x];
+        }
+    }
+
+    @Override
+    float get_percentage(int m[]) {
+        int per=0, total=0;
+
+        for(int x=0;x<3; x++) {
+            total += m[x];
+        }
+        return ((total*100)/300);
+    }
+}

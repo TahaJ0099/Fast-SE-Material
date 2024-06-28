@@ -1,0 +1,71 @@
+package taha;
+import java.util.*;
+class Employee{
+	private String 1st_name, last_name;
+	private int income;
+	
+	
+	public void set1st_Name(String 1st_name) {
+		this.1st_name=1st_name;
+	}
+	public void setlast_Name(String last_name){
+	this.last_name=last_name;
+	}
+	public void setIncome(int income) {
+		if(income<=0) {
+			this.income=0;
+			
+		}
+		else {
+		this.income=income;
+		}
+	}
+	public String get1st_Name() {
+		return(1st_name);
+	}
+	public String getlast_Name() {
+		return(last_name);
+	}
+	public int getincome(){
+	return(income);
+	}
+	
+	public void profit(int inc) {
+
+		int tot=(10/100)*(inc*12);
+		tot=tot+inc;
+		System.out.println("Yearly Income After 10% profit: "+ tot);
+		System.out.println("Yearly income is : "+ (inc*12));
+		
+		
+	}
+}
+
+
+public class Main {
+public static void main(String[] args) {
+	Scanner t = new Scanner(System.in);
+	Employee e = new Employee();
+	
+	System.out.println("Enter Your 1st Name: ");
+	String 1st_name = t.nextLine();
+	
+	System.out.println("Enter Your Last Name:  ");
+	String last_name = t.nextLine();
+	
+	System.out.println("Enter your Monthly income: ");
+	int income = t.nextInt();
+	
+	System.out.println("\n\n");
+	e.setfirstName(1st_name);
+	e.setLastName(last_name);
+	e.setIncome(income);
+	
+	System.out.println("First Name: "+e.getfirstName());
+	System.out.println("Last Name: "+e.getLastName());
+	System.out.println("Income: "+e.getIncome());
+	e.profit(income);
+	
+	
+}
+}

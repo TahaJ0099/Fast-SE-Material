@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Tank{
+    String cond;
+    int c;
+//default constructor.
+    public Tank(){
+    }
+
+    public void fill(){
+        cond= "filled";
+        c=1;
+    }
+    public void empty(){
+        cond= "empty";
+        c=0;
+    }
+    protected void finalize(){
+        System.out.println("Tank is destroyed");
+    }
+
+}
+
+lab Q4 {
+    public static void main(String[] args) {
+Tank tank1 = new Tank();
+tank1.fill();
+if (c==1){
+    tank1.empty();
+    tank1.finalize();
+}
+else {
+    tank1.finalize();
+}
+    }
+    }

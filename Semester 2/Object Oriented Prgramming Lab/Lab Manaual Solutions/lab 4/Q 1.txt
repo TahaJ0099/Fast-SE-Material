@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Box {
+
+    int w, h;
+
+//parametrized constructor.
+    public Box(int wid,int hei){
+        w=wid;
+        h=hei;
+        if(wid<0 || hei<0 ){
+            w=0;
+            h=0;
+        }
+    }
+    public Box(int hei){
+        h=hei;
+        System.out.println("Enter the width:");
+        int w=input.nextInt();
+    }
+    public void Box(){
+
+        System.out.println("Enter the height:");
+        int h=input.nextInt();
+        System.out.println("Enter the width:");
+        int w=input.nextInt();
+    }
+
+}
+
+
+
+lab Q1 {
+    Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+
+    }
+}

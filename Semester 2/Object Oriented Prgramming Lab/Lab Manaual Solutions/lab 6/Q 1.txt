@@ -1,0 +1,50 @@
+package com.company;
+class Course{
+    protected String name,venue,course_code;
+    protected int cr_hr;
+    public Course(String n,String v,String cr_code,int cr_hr)
+    {
+        this.name=n;
+        this.venue=v;
+        this.course_code=cr_code;
+        this.cr_hr=cr_hr;
+    }
+//default costructor.
+    Course() {
+    }
+}
+class Java_Course extends Course {
+    String teacher_name;
+    public Java_Course(String n,String v,String cr_code,int cr_hr)
+    {
+        super(n,v,cr_code,cr_hr);
+    }
+    void Display()
+    {
+        System.out.println("Teacher name = " + getname());
+        System.out.println("Name : " + n);
+        System.out.println("venue : " + v);
+        System.out.println("Course code : " + cr_code);
+        System.out.println("credit hours : " +cr_hr);
+    }
+    Java_Course(String teacher_name)
+    {
+        this.teacher_name=n;
+    }
+    String getname()
+    {
+        return teacher_name;
+    }
+    void setname(String teacher_name)
+    {
+        this.teacher_name=teacher_name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Java_Course t1 = new Java_Course("Taha Jawaid","Lab 3","OO_1234",1);
+        t1.setname("Sir Zain");
+        t1.Display();
+    }
+}

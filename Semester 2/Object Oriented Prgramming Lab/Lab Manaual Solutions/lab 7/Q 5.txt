@@ -1,0 +1,42 @@
+package com.company;
+import java.util.*;
+
+class Adder{
+    int ax,ay;
+    static int tx;
+    static int ty;
+    int entries;
+    public Adder(){}
+    public Adder(int ax, int ay){
+        this.ax=ax;
+        this.ay=ay;
+    }
+    static int add(int ax,int ay){
+        ty=0;
+        ty=ax+ay;
+        return ty;
+    }
+    static int addMany(int entries){
+        int i;
+        tx=0;
+        int tem;
+        Scanner sc = new Scanner(System.in);
+        for (i=1;i<=entries;i++){
+            System.out.println("Enter integer that will add = ");
+            tem=sc.nextInt();
+            tx+=tem;
+        }
+        return tx;
+    }
+    public void display(){
+        System.out.println("Sum of functions: " + (ty+tx));
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Adder q1 = new Adder();
+        System.out.println(q1.addMany(3));
+        System.out.println(q1.add(9,10));
+        q1.display();
+    }
+}

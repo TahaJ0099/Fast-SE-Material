@@ -1,0 +1,26 @@
+package taha;
+import java.util.*;
+class Rectangle{
+	private int l, b;
+	
+	public void SetArea(int l, int b){
+		this.l=l;
+		this.b=b;
+	}
+	public int getArea() {
+		return(l*b);
+	}
+}
+public class Main {
+public static void main(String[] args) {
+	Rectangle r1 = new Rectangle();
+	Rectangle r2 = new Rectangle();
+	
+	  r1.SetArea(4, 5);
+      r2.SetArea(5, 8);
+   System.out.println("Area of a Rectangle 1 is : "+r1.getArea());
+   System.out.println("Area of a rectangle 2 is : "+r2.getArea());
+	
+
+}
+}

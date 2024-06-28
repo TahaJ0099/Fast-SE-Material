@@ -1,0 +1,49 @@
+package com.company;
+import java.util.*;
+//Array list program.
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner p=new Scanner(System.in);
+        double n;
+        int x= 1;
+        double s=0;
+        double a;
+        ArrayList<Double> marks=new ArrayList<Double>();
+        System.out.println("Enter Student marks, Press 0 to end the the program");
+        System.out.print(x + ". ");
+        n=p.nextDouble();
+        while (n!=0) {
+            System.out.printf("%d. ", x + 1);
+            marks.add(n);
+            n= p.nextDouble();
+            x++;
+        }
+        System.out.println("Marks of Students: ");
+        int y = 1;
+        for (double i : marks) {
+            System.out.println("Student " + y + " marks: " + i);
+            y++;
+        }
+        marks = remove(marks);
+        for (int j=0;j<marks.size();j++){
+            s=s + marks.get(j);
+        }
+        a=s/marks.size();
+        System.out.println("\nAfter remeoving the results of those students who got less than 50 marks the average is;");
+        System.out.printf("Average of the class is: %.2f",a);
+    }
+
+    public static ArrayList<Double> remove(ArrayList<Double>m) {
+        int k= 0;
+        while (k<m.size()){
+            if (m.get(k) < 50) {
+                m.remove(k);
+            }
+            else
+                k++;
+        }
+        return m;
+    }
+}

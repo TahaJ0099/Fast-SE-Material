@@ -1,0 +1,86 @@
+package taha;
+import java.util.*;
+
+class Car{
+    private int model, speed;
+    private String make;
+
+public void setModel(int model){
+this.model=model;
+}
+    public void getModel(){
+     System.out.print("\t\t"+model);
+ 
+ }
+public void setSpeed(int speed){
+	this.speed=speed;
+}
+public void getSpeed(){
+    System.out.print("\t\t"+speed);
+
+}
+public void setMake(String make){
+    this.make=make;
+}
+public void getMake(){
+    System.out.print(make);
+    
+}
+
+
+public  int Accelerate(int speed){
+    speed=speed+5;
+    return speed;
+}
+
+public int Brake(int p){
+    this.speed=speed-5;
+    return speed;
+
+    }
+}
+
+public class Main {
+	
+	    public static void main(String[] args) {
+
+	        Scanner t = new Scanner(System.in);
+	        Car a1 = new Car();
+	        
+	        System.out.println("Enter number of terms: ");
+	        int term = t.nextInt();
+	        t.nextLine();
+	        String [] n = new String[term];
+	        int [] mo = new int[term];
+	        int [] s = new int[term];
+
+
+for(int i=0; i<term; i++) {
+	        System.out.println("Enter "+(i+1)+ " car name: ");
+	         n[i] = t.nextLine();
+
+	        System.out.println("Enter "+(i+1)+ " car year Model: ");
+	        mo[i] = t.nextInt();
+
+	        System.out.println("Enter "+(i+1)+" car speed: ");
+	        s[i] = t.nextInt();
+	        t.nextLine();
+}
+System.out.println("Make: \t Speed : \t Model: \t speed after increment:\t Brake:  ");
+for(int j=0; j<term; j++) {
+	       
+	        a1.setMake(n[j]);
+	        a1.setSpeed(s[j]);
+	        a1.setModel(mo[j]);
+
+	        a1.getMake();
+	        a1.getSpeed();
+	        a1.getModel();
+	        System.out.print("  \t"+a1.Accelerate(s[j]));
+	        System.out.println("  \t"+a1.Brake(s[j]));
+}
+
+
+
+}
+}

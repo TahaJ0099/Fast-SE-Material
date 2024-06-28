@@ -1,0 +1,74 @@
+package com.company;
+import java.util.*;
+
+class cars {
+    private String name,coolor,engine;
+    private int modle;
+    public static int num-of-cars=0;
+    static int count=0;
+
+    public void setName(String name)
+    {
+        this.name=name;
+    }
+    public void setModel(int modle)
+    {
+        this.modle=modle;
+    }
+    public void setEngine(String engine)
+    {
+        this.engien=engine;
+    }
+    public void setColor (String color)
+    {
+        this.color=color;
+    }
+    public int getModel()
+    {
+        return this.modle;
+    }
+    public String getName()
+    {
+        return this.name;
+    }
+    public String getEngine()
+    {
+        return this.engine;
+    }
+    public String getColor()
+    {
+        return this.color;
+    }
+    cars (){
+        num-of-cars++;
+    }
+    public void display (){
+        count++;
+        System.out.println("\n"+c+". Name: "+getName() + "  ;\t"+"Colour: "+getColor() + "  ;\t"+"Model: "+getModel() + "  ;\t"+"Engine: "+getEngine());
+    }
+}
+public class Main {
+
+    public static void main(String[] args) {
+        cars a1 = new cars();
+        cars a2 = new cars();
+        cars a3 = new cars();
+        a1.setName("KIA SPORTAGE");
+        a1.setModel(2022);
+        a1.setColor("White");
+        a1.setEngine("2.0L Gasoline MPI");
+        a2.setName("FORD MUSTANG");
+        a2.setModel(2022);
+        a2.setColor("Silver");
+        a2.setEngine("5.0L Ti-VCT V8");
+        a3.setName("MERCEDES BENZ");
+        a3.setModel(2020);
+        a3.setColor("White");
+        a3.setEngine("463-hp twin-turbocharged 4.0-liter V-8");
+        System.out.println();
+        System.out.println("Number of cars = "+cars.num-of-cars);
+        a1.display();
+        a2.display();
+        a3.display();
+    }
+}

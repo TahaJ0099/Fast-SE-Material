@@ -1,0 +1,26 @@
+import java.util.*;
+
+class A{
+    String r;
+    public A(){
+        r=null;
+    }
+}
+class B{
+    String gates = "My name gates";
+    public B(){
+
+    }
+}
+class C{
+    String gates;
+    publicC(){
+        gates = "My name gates";
+    }
+}
+lab Q5 {
+    public static void main(String[] args) {
+        
+    }
+
+    }

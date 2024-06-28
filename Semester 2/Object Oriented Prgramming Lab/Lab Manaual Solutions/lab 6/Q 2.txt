@@ -1,0 +1,92 @@
+package com.company;
+import java.util.*;
+
+class Person {
+    Scanner t=new Scanner(System.in);
+    String name,nation,address;
+    int age;
+    int []cnic=new int[13];
+//default constructor. 
+   Person()
+    {
+        System.out.println("I am a person");
+    }
+    void input() {
+        int i=0,j=0;
+        name=t.next();
+        nation=t.next();
+        age=t.nextInt();
+        for(j=0;j<13;j++)
+        {
+            cnic[j]=t.nextInt();
+            i++;
+        }
+        if(i>=12&&i<=14)
+            System.out.println("not found");
+
+    }
+    void display()
+    {
+        System.out.println(name);
+        System.out.println(nation);
+        System.out.println(age);
+        for(int i=0;i<13;i++)
+        {
+            System.out.print(cnic[i]);
+        }
+        System.out.println("\n");
+    }
+}
+class Employee extends Person {
+    Scanner t = new Scanner(System.in);
+    String company, city;
+    int experience;
+
+    public Employee() {
+        System.out.println("I am an Employee");
+    }
+
+    void input1() {
+        company = t.next();
+        city = t.next();
+        experince = t.nextInt();
+    }
+
+    void display1() {
+        System.out.println(company);
+        System.out.println(city);
+        System.out.println(experince);
+    }
+}
+class Manager extends Person {
+    Scanner t=new Scanner(System.in);
+    String [] Employee = new String[10];
+    public Manager()
+    {
+        System.out.println("I am a Manager");
+    }
+    void input2()
+    {
+        for(int i=0;i<5;i++)
+            Employee[i]=t.next();
+    }
+    void display2()
+    {
+        for(int i=0;i<5;i++)
+            System.out.println(Employee[i]);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person s1 = new Person();
+        s1.input();
+        s1.display();
+        Employee a1 = new Employee();
+        a1.input1();
+        a1.display1();
+        Manager b1 = new Manager();
+        b1.input2();
+        b1.display2();
+    }
+}

@@ -1,0 +1,44 @@
+package com.company;
+
+class Vehicle{
+    String name;
+    int num,wh,sp;
+//default constructor.   
+ public Vehicle(){
+        System.out.println("It's a vehicle");
+    }
+//function.
+    public void accelerate(int sp){
+        this.sp=sp;
+        System.out.println("Speed = "+sp+"km/hr");
+    }
+}
+class FourWheeler extends Vehicle{
+    Boolean pow_st;
+//parameterized constructor.    
+public FourWheeler(String name, int num, int wh, Boolean pow_st){
+        this.name=name;
+        this.num=num;
+        this.wh=wh;
+        this.pow_st=pow_st;
+    }
+    public void display(){
+        System.out.println("Vehicle Name = "+name);
+        System.out.println("Vehicle Number = "+num);
+        System.out.println("No. of wheels in vehicle = "+wh);
+        if (pow_st==true){
+            System.out.println("Car has a power steering");
+        }
+        else{
+            System.out.println("Car doesn't have power steering");
+        }
+        System.out.println("The car's speed = "+sp);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        FourWheeler a1 = new FourWheeler("Ford", 1234, 6, true);
+        a1.accelerate(300);
+        a1.display();
+    }
+}

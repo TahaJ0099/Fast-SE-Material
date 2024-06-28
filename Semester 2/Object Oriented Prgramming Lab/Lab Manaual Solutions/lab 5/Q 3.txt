@@ -1,0 +1,40 @@
+package com.company;
+import java.util.*;
+
+ class Average_Purchases {
+    Scanner p=new Scanner(System.in);
+    private int num-of-purchase;
+    private double[] items;
+    private double a=0;
+
+    Average_Purchases(){
+        System.out.println("How many purchases you made today?");
+        num-of-purchase=p.nextInt();
+    }
+    public void register(){
+        items=new double[num-of-purchase];
+        for(int i=0;i<num-of-purchase;i++){
+            System.out.print((i+1)+") Enter the price of the item "+(i+1)+" = ");
+            items[i]=p.nextDouble();
+        }
+    }
+    public void display(){
+        for(int i=0;i<num-of-purchase;i++){
+            System.out.print("Item "+(i+1)+" price "+items[i]+"\n");
+        }
+    }
+    public void Avg(){
+        for(int i=0;i<num-of-purchase;i++){
+            a+=items[i];
+        }
+        System.out.println("Average cost is "+(a/num-of-purchase));
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Average_Purchases x1=new Average_Purchases();
+        x1.register();
+        x1.display();
+        x1.Avg();
+    }
+}

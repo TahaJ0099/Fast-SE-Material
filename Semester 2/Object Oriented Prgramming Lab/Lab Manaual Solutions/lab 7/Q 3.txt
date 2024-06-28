@@ -1,0 +1,61 @@
+package com.company;
+import java.util.*;
+
+class Robot{
+    int x,y;
+    String di;
+    public Robot(){}
+//parameterized construtor.   
+ public Robot(int x, int y, String di){
+        this.x=x;
+        this.y=y;
+        this.di=di;
+    }
+    public void display(){
+        System.out.println("Position X = "+x);
+        System.out.println("Position Y = "+y);
+    }
+}
+class MovingRobot extends Robot {
+    int step;
+//default constructor.   
+ public MovingRobot() {
+    }
+//parameterized constructor.    
+public MovingRobot(int x, int y, String di, int step) {
+        super(x,y,di);
+        this.step=step;
+    }
+//function.
+    public void moveRobot() {
+        switch (di) {
+            case "N":
+            case "n":
+                y+=step;
+                break;
+            case "S":
+            case "s":
+                y-=step;
+                break;
+            case "E":
+            case "e":
+                x+=st;
+                break;
+            case "W":
+            case "w":
+                x-=st;
+                break;
+        }
+    }
+    public void display() {
+        System.out.println("Position X = " + x);
+        System.out.println("Position Y = " + y);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        MovingRobot a1 = new MovingRobot(1,2,"n",3);
+        a1.moveRobot();
+        a1.display();
+    }
+}

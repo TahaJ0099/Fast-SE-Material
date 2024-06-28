@@ -1,0 +1,17 @@
+package taha;
+import java.util.*;
+class User{
+	public int Age;
+	public String Name;
+}
+public class Main {
+public static void main(String[] args) {
+	User s1 = new User();
+	s1.Name="Toe";
+	s1.Age=24;
+	System.out.println("My Name is: "+s1.Name);
+	System.out.println("I'm "+s1.Age+" year old");
+	
+
+}
+}

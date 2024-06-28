@@ -1,0 +1,33 @@
+package com.company;
+import java.util.*;
+class Student {
+    private String name,roll;
+    static String Uni;
+    static int count=0;
+    
+    public static void setUniversity(String uni){
+        Uni=uni;
+    }
+    Student (String name, String rollno)
+    {
+        this.name=name;
+        this.roll= rollno;
+    }
+    public void display (){
+        count++;
+        System.out.println(f+": The Student name is: "+this.name);
+        System.out.println("Student's roll number is: "+this.roll);
+        System.out.println(" The University Name: "+Uni);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Student.setUniversity("Fast University");
+        Student std1 = new Student("Taha Jawaid", "k21-3881");
+        Student std2 = new Student("Talha Amjed", "k21-3810");
+        Student std3 = new Student("Bilal Khawar","k21-3843");
+        std1.display();
+        std2.display();
+        std3.display();
+    }
+}

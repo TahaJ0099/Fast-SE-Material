@@ -1,0 +1,52 @@
+package com.company;
+class Book{
+    protected int id,isbn,price;
+    protected String name,author;
+    public Book(int id,int isbn,int price,String name, String author)
+    {
+        this.id = id;
+        this.isbn = isbn;
+        this. price=price;
+        this.name=name;
+        this.author=author;
+    }
+//default constructor.
+    Book() {
+    }
+}
+class Category1 extends Book {
+    private   String category;
+    public Category1(String category)
+    {
+        super(12,12345,755,"C++","Taha");
+        this.category=category;
+    }
+    public Category1()
+    {
+        System.out.println("This is for upcasting");
+    }
+    String setCategory(String category)
+    {
+        this.category=category;
+    }
+    String getCategory()
+    {
+        return category;
+    }
+    void display()
+    {
+        System.out.println("id = " + id);
+        System.out.println("ISBN = "+isbn);
+        System.out.println("Price = " + price);
+        System.out.println("Book name = " +name);
+        System.out.println("Category = " +getCategory());
+    }
+
+}
+public class Main {
+    public static void main(String[] args) {
+        Book b1 = new Category1();
+        Category1 c1 = new Category1("Enjoyable");
+        c1.display();
+    }
+}

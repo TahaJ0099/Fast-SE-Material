@@ -1,0 +1,65 @@
+package com.company;
+import java.util.*;
+
+class Employee{
+    String name,position;
+    int num_of_years;
+    float salary=30000;
+//default construtor.   
+ public Employee(){
+        System.out.println("I am an employee");
+        name="Unassigned employee";
+    }
+    public Employee(String n,String p, int num_of_years,float salary){
+        this.name=n;
+        this.position=p;
+        this.num_of_years= num_of_years;
+        this.salary=salary;
+    }
+    public void input(){
+        Scanner x= new Scanner(System.in);
+        System.out.println("Name of Employee = ");
+        name=x.nextLine();
+        System.out.println("Position of Employee = ");
+        position=x.nextLine();
+        System.out.println("Employee experience in company: ");
+        num_of_years=x.nextInt();
+        System.out.println("Employee salary: ");
+        salary=x.nextFloat();
+    }
+    public void display(){
+        System.out.println("Employee name: "+name);
+        System.out.println("Employee position: "+position);
+        System.out.println("Employee experience in company: "+num_of_years);
+        System.out.println("Employee salary: "+salary);
+    }
+}
+class FullTimeEmployee extends Employee{
+    double increment=0.2;
+//default constructor    
+public FullTimeEmployee(){
+        System.out.println("I am a full time employee in the company.");
+    }
+//function.
+    public double incremented_salary(){
+        System.out.println(salary*increment);
+        return salary*increment;
+    }
+}
+class PartTimeEmployee extends Employee{
+    double increment=0.05;
+//default constructor.    
+public PartTimeEmployee(){
+        System.out.println("I am a part time employee in the company");
+    }
+//function.
+    public double incremented_salary(){
+        System.out.println(salary*increment);
+        return salary*increment;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+
+    }
+}

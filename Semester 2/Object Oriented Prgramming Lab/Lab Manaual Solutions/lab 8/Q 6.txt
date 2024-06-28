@@ -1,0 +1,75 @@
+package com.company;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner t = new Scanner(System.in);
+        Baseball a1 = new Baseball();
+        Football b1 = new Football();
+        rock c1 = new rock();
+
+        System.out.println("Enter BrandName BaseBall ");
+        a1.brandName=t.nextLine();
+
+        System.out.println("Enter BrandName of Football");
+        a1.brandName=t.nextLine();
+
+        System.out.println("BrandName is :"+b1.getBrandName());
+        a1.bouonce();
+        a1.toss();
+        System.out.println("\nBrandName is : "+b1.getBrandName());
+        b1.bouonce();
+        b1.toss();
+        System.out.println();
+        c1.toss();
+    }
+}
+interface tossable{
+  public void toss();
+}
+class Ball implements tossable{
+    String brandName;
+    Ball(){}
+    Ball(String brandName){
+        this.brandName=brandName;
+    }
+    public String getBrandName() {
+        return this.brandName;
+    }
+    public void bouonce() {
+        System.out.println("Ball is bounced: ");
+    }
+    @Override
+    public void toss() {
+        System.out.println("Ball has been Tossed");
+    }
+}
+class rock implements tossable{
+    public void toss() {
+        System.out.println("Rock is tossed: ");
+    }
+}
+class Baseball extends Ball{
+    	String brandName;
+ public String Ball(String brandName) {
+	  this.brandName=brandName;
+	  return this.brandName;
+  }
+    @Override
+    public void bouonce() {
+        System.out.println("baseBall is bounced: ");
+    }
+    @Override
+    public void toss() {
+        System.out.println("Baseball is tossed: ");
+    }
+}
+class Football extends Ball{
+    @Override
+    public void bouonce() {
+        System.out.println("Football is bounced");
+    }
+    @Override
+    public void toss() {
+        System.out.println("Football is toss");
+    }

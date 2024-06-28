@@ -1,0 +1,42 @@
+package taha;
+import java.util.*;
+
+class book{
+	private String tital, author;
+	private double pr;
+	
+	public void setTitle(String tital) {
+		this.tital=tital;
+	}
+	
+	public void setAuthor(String author) {
+		this.author=author;
+	}
+	public void setPrice(double pr) {
+		this.pr=pr;
+	}
+	
+	public String getTital() {
+		return (tital);
+	}
+	public String getAuthor() {
+		return(author);
+	}
+	public double getPrice() {
+		return(pr);
+	}
+}
+
+public class BookDemo {
+public static void main(String[] args) {
+	Scanner t = new Scanner(System.in);
+	book bookDemo = new book();
+	bookDemo.setTitle("Great Expectations");
+	bookDemo.setAuthor("Charles Dickens");
+	bookDemo.setPrice(79.75);
+	
+	System.out.println("Tital: "+bookDemo.getTital());
+	System.out.println("Author: "+bookDemo.getAuthor());
+	System.out.println("Price: " +bookDemo.getPrice());
+}
+}

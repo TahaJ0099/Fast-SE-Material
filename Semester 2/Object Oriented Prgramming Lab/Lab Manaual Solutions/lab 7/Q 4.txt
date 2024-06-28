@@ -1,0 +1,48 @@
+package com.company;
+
+class Accounts{
+    double bal;
+    public  Accounts(){}
+    public Accounts(double bal){
+        this.bal=bal;
+    }
+    public void debit(double m){
+        bal-=m;
+    }
+    public void credit(double m){
+        bal+=m;
+    }
+
+    public double get_balance() {
+        return bal;
+    }
+}
+class CheckingAccount extends Accounts{
+    public CheckingAccount (double bal){
+        this.bal=bal;
+    }
+}
+class SavingAccount extends Accounts{
+    int t_span;
+    public SavingAccount(double bal,int t_span){
+        this.bal=bal;
+        this.t_span=t_span;
+    }
+    public double Interest(){
+        return (bal*0.03*t_span);
+    }
+
+    @Override
+    public void credit(double m) {
+        super.credit(m);
+        bal+=Interest();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Accounts a1 = new SavingAccount(7500,5);
+        a1.credit(90);
+        System.out.println(" Your current balance is = " +a1.get_balance());
+
+    }
+}

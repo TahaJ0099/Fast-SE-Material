@@ -1,0 +1,41 @@
+package com.company;
+import java.util.*;
+
+class Billing{
+       public int q;
+    public int p;
+    int[][] arr = new int[2][2];
+    public Billing(){
+        arr[0][0] = 1;
+        arr[1][0] = 2;
+        arr[0][1] = 20;
+        arr[1][1] = 25;
+    }
+    public int bill(){
+        Scanner t=new Scanner(System.in);
+        int tem;
+        System.out.println("Enter the product no: ");
+        p=t.nextInt();
+        System.out.println("Enter the quantity you want to buy: ");
+        q=t.nextInt();
+        p-=1;
+        tem= arr[p][1];
+        //System.out.println("The Total bill is: "+temp*quantity);
+        return tem*q;
+    }
+    public void invoice(){
+        System.out.println(" INVOICE: " +
+                "Total: "+bill());
+        System.out.println("Product: "+arr[p][0]);
+        System.out.println("Price: "+arr[p][1]);
+        System.out.println("Amount: "+q);
+    }
+
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Billing y1=new Billing();
+        y1.invoice();
+    }
+}

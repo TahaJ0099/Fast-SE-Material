@@ -1,0 +1,58 @@
+package com.company;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner t=new Scanner(System.in);
+        System.out.println("Enter size of array; ");
+        int s=t.nextInt();
+        int m[] =new int[s];
+        for(int x=0;x<s;x++) {
+            System.out.println("Enter "+(x+1)+" element: ");
+            m[x]=t.nextInt();
+        }
+        Array c1 = new Array();
+        c1.add(m);
+        c1.remove(m);
+        c1.check(m);
+    }
+}
+interface queue{
+    void add(int m[]);
+    void remove(int m[]);
+    void check(int m[]);
+}
+class Array implements queue{
+    Array(){}
+    @Override
+    public void add(int m[]) {
+        int tot=0;
+        for(int x=0;x<m.length;x++) {
+            tot=tot+m[x];
+        }
+        System.out.println("sum is "+tot);
+    }
+    @Override
+    public void remove(int m[]) {
+        Scanner t=new Scanner(System.in);
+        System.out.println("Enter the element to Remove: ");
+        int r=t.nextInt();
+
+        for(int x=0;x<m.length;x++)
+            if(m[x]==r) {
+                int tem=m[x];
+                m[x]=m[m.length-1];
+                m[m.length-1]=m[x];
+                m[x]=tem;
+            }
+        System.out.print("Element is removed: ");
+        for(int x=0;x<m.length-1;x++) {
+            System.out.print(m[x]+" ");
+        }}
+    @Override
+    public void check(int m[]) {
+        if(m==null)
+            System.out.println("Array is empty:");
+        else
+            System.out.println("Array isn't empty: ");
+    }}
