@@ -1,0 +1,257 @@
+public class Main {
+    public static void main(String[] args) {
+        Hashing h = new Hashing();
+//	 Division
+        h.initialdiv();
+        h.insertdiv(12);
+        h.insertdiv(34);
+        h.insertdiv(55);
+        h.insertdiv(66);
+        h.printdiv();
+        h.searchdiv(55);
+        h.searchdiv(66);
+        System.out.println(" deltion of div");
+        h.deletediv(55);
+        h.printdiv();
+        h.insert_Stringdiv("naresh");
+        h.insert_Stringdiv("love");
+        h.insert_Stringdiv("key");
+        h.print_Stringdiv();
+        System.out.println("\n");
+        // Separate Chaining
+        h.initial_SC();
+        h.insert_SC(12);
+        h.insert_SC(22);
+        h.insert_SC(42);
+        h.insert_SC(11);
+        h.insert_SC(21);
+        h.print_SC();//////////////////
+        System.out.println("Delete");
+        h.delete_SC(42);
+        h.delete_SC(21);
+        h.print_SC();////////////////////////
+        System.out.println("Search: "+h.search_SC(12));
+        System.out.println(h.search_SC(11));
+        System.out.println("Linear and Quadratic Probing ");  /////
+        System.out.println("Linear Probing");
+        h.initial_LQ();
+        h.Linear_Probing(12);
+        h.Linear_Probing(22);
+        h.Linear_Probing(34);
+        h.print_LQ();
+        System.out.println("Quadratic Probing");
+        h.initial_LQ();
+        h.Quadratic_Probing(12);
+        h.Quadratic_Probing(22);
+        h.Quadratic_Probing(34);
+        h.Quadratic_Probing(42);
+        h.print_LQ();
+        System.out.println("Re-Hashing");
+        h.initial_R();
+        h.insertR(100);
+        h.insertR(101);
+        h.insertR(102);
+        h.reprinthash();
+        System.out.println("After Rehash :");
+        h.insertR(103);
+        h.printhash();
+    }
+}
+class Node{
+    int d;
+    Node n; }
+class Hashing{
+    // Separate chaining
+    Node h=null;
+    Node nno[]=new Node[10];
+    int s=nno.length;
+    public void initial_SC(){
+        for(int i=0;i<nno.length;i++){
+            nno[i]=null; }
+    }
+    public void insert_SC(int d){
+        Node t=new Node();
+        t.d=d;
+        int k=d%s;
+        if(nno[k]==null){
+            nno[k]=t;
+            h=nno[k]; }
+        else{
+            Node cur=nno[k];
+            t.n=cur;
+            nno[k]=t; }
+    }
+    public void delete_SC(int d){
+        int k=d%s;
+        Node t=nno[k];
+        Node ptr=null;
+        if(t.d==d){
+            t=t.n;
+            nno[k]=t; }
+        else{
+            while(t.d!=d){
+                ptr=t;
+                t=t.n; }
+            ptr.n=t.n; }
+        t=null;
+    }
+    public boolean search_SC(int d){
+        int k=d%s;
+        Node t=nno[k];
+        while(t!=null){
+            if(t.d==d){
+                return true; }
+            t=t.n; }
+        return false;
+    }
+    public void print_SC(){
+        for(int i=0;i<nno.length;i++){
+            if(nno[i]!=null){
+                Node t=nno[i];
+                System.out.print("newnode["+i+"]");
+                while(t!=null){
+                    System.out.print("----"+t.d);
+                    t=t.n; }
+                System.out.println();
+            }
+        }
+    }
+    // Hashing Division Method
+    int a[]=new int[10];
+    String st[]=new String[10];
+    int si=a.length;
+    public void initialdiv(){
+        for(int i=0;i<a.length;i++){
+            a[i]=-1;
+            st[i]=null; }
+    }
+    public void insertdiv(int d){
+        int k=d%si;
+        if(a[k]==-1){
+            a[k]=d; }
+    }
+    public void insert_Stringdiv(String str){
+        int Ascii=0;
+        for(int i=0;i<str.length();i++){
+            char c=str.charAt(i);
+            Ascii=Ascii+(int)c; }
+        int k=Ascii%si;
+        if(st[k]==null){
+            st[k]=str; }
+    }
+    //    -------------------------Searching-------------------
+    public void searchdiv(int d){
+        if(a[d%si]==d) {
+            System.out.println("Number Found in " + d % si + " position"); }
+        else
+            System.out.println("Number is not present: ");
+    }
+    //    ------------------------Deletion---------------------------
+    public void deletediv(int d){
+        if(a[d%si]==d){
+            a[d%si]=-1; }
+    }
+    public void print_Stringdiv(){
+        for(int i=0;i<st.length;i++){
+            if(st[i]!=null){
+                System.out.println(i+"----"+st[i]); }
+        }
+    }
+    public void printdiv(){
+        for(int i=0;i<a.length;i++){
+            if(a[i]!=-1){
+                System.out.println(i+" --- "+a[i]); }
+        }
+    }
+    // Linear Probing And Quadratic Probing
+    int d[] = new int[10];
+    int size=d.length;
+    public void initial_LQ(){
+        for(int i=0;i<size;i++){
+            d[i]=-1; }
+    }
+    public void Linear_Probing(int d){
+        int k=d%size;
+        if(a[k]==-1){
+            a[k]=d; }
+        else{
+            for(int i=1;i<size;i++){
+                int num=(k+i)%size;
+                if(a[num]==-1){
+                    a[num]=d;
+                    break; }
+            }
+        }
+    }
+    public void Quadratic_Probing(int d){
+        int k=d%size;
+        if(a[k]==-1){
+            a[k]=d; }
+        else{
+            for(int i=1;i<size;i++){
+                int num=(k+(i*i))%size;
+                if(a[num]==-1){
+                    a[num]=d;
+                    break; }
+            }
+        }
+    }
+    public void print_LQ(){
+        for(int i=0;i<size;i++){
+            if(a[i]!=-1){
+                System.out.println(i+"----"+a[i]); }
+        }
+    }
+    // Re-Hashing
+        int x[]=new int[4];
+        int siz=x.length,p=1,q=0;
+        float l=0.75f;
+        int w[]=new int [8];
+        public void initial_R(){
+            for(int i=0;i<siz;i++){
+                x[i]=-1; } }
+        public void insertR(int val){
+            int m=val%siz;
+            float u= p/siz;
+            p++;
+            if(u<l){
+                if(x[m]==-1){
+                    x[m]=val; }
+                else{
+                    for(int i=0;i<siz;i++){
+                        int k=(m+i)%siz;
+                        if(x[k]==-1){
+                            x[k]=val;
+                            break; }  }
+                } }
+            else{
+                for(int i=0;i<w.length;i++){
+                    w[i]=-1; }
+                for(int i=0;i<siz;i++){
+                    if(x[i]!=-1){
+                        int n=x[i]%w.length;
+                        if(w[n]==-1){
+                            w[n]=x[i]; }  } }
+                int k=val%w.length;
+                if(w[k]==-1){
+                    w[k]=val; }
+                else{
+                    for(int i=0;i<w.length;i++){
+                        int p=(k+i)%w.length;
+                        if(w[p]==-1) {
+                            w[p]=val;
+                            break; }  }
+                } }
+        }
+        public void printhash(){
+            for(int i=0;i<w.length;i++){
+                if(w[i]!=-1){
+                    System.out.println("At "+i+" data = "+w[i]+" "); }  }
+        }
+        public void reprinthash(){
+            for(int i=0;i<siz;i++){
+                if(x[i]!=-1){
+                    System.out.println("At "+i+" data = "+x[i]+" "); }  }
+            System.out.println();
+        }
+    }

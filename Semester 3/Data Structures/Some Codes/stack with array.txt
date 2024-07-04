@@ -1,0 +1,63 @@
+import java.util.*;
+class Stack_array{
+    int t=-1,ms=10;
+    int a[]=new int[ms];
+    boolean isEmpty(){
+        return (t<0);
+    }
+    boolean push(){
+        Scanner sc=new Scanner(System.in);
+        if(t==ms-1){
+            System.out.println("Overflow !!");
+            return false; }
+        else{
+            System.out.println("Enter Value");
+            int val=sc.nextInt();
+            t++;
+            a[t]=val;
+            return true; }
+    }
+    boolean pop(){
+        if (t==-1){
+            System.out.println("Underflow !!");
+            return false; }
+        else{
+            t--;
+            return true; }
+    }
+    void display (){
+        for(int i=t;i>=0;i--){
+            System.out.println(a[i]); }
+    }
+}
+public class Main{
+    public static void main(String[] args) {
+        int c=0;
+        Scanner sc=new Scanner(System.in);
+        Stack_array s=new Stack_array();
+        System.out.println("*********Stack operations using array*********\n");
+        System.out.println("\n------------------------------------------------\n");
+        while(c!=2){
+            System.out.println("\n1.Push\n2.Pop\n");
+            System.out.println("Enter your choice ");
+            c=sc.nextInt();
+            switch(c){
+                case 1:{
+                    s.push();
+                    System.out.println(" ");
+                    s.display();
+                    break;
+                }
+                case 2:{
+                    s.pop();
+                    System.out.println(" ");
+                    s.display();
+                    break;
+                }
+                default:{
+                    System.out.println("Please Enter valid choice ");
+                }
+            }
+        }
+    }
+}

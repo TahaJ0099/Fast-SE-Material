@@ -1,0 +1,107 @@
+import java.util.*;
+public class Main{
+    static class Line{
+        int s,d;
+        public Line(int s,int d){
+            this.s=s;
+            this.d=d;
+        } }
+    public void Adjacent_List(ArrayList<Line> g[]){
+        for(int i=1;i<g.length;i++){
+            g[i]=new ArrayList<>(); }
+        g[1].add(new Line(1,4));
+        g[2].add(new Line(2,4));
+        g[2].add(new Line(2,5));
+        g[3].add(new Line(3,5));
+        g[4].add(new Line(4,1));
+        g[4].add(new Line(4,2));
+        g[4].add(new Line(4,5));
+        g[5].add(new Line(5,2));
+        g[5].add(new Line(5,3));
+        g[5].add(new Line(5,4));
+        for(int j=1;j<g.length;j++) {
+            System.out.print(j+": ");
+            for(int i=0;i<g[j].size();i++) {
+                Line l=g[j].get(i);
+                System.out.print(l.d+" "); }
+            System.out.println(); }
+    }
+    public void Breadth_F_S(ArrayList<Line> g[]) {
+        Queue<Integer> q=new LinkedList<>();
+        boolean r[]=new boolean[g.length];
+        q.add(1);
+        while(!q.isEmpty()) {
+            int c=q.remove();
+            if(!r[c]) {
+                System.out.println(c);
+                r[c]=true;
+                for(int i=0;i<g[c].size();i++) {
+                    Line l=g[c].get(i);
+                    q.add(l.d); }
+            }
+        }
+    }
+    public void D_F_S(ArrayList<Line> g[],int cur,boolean r[]) {
+        System.out.print(cur+" ");
+        r[cur]=true;
+        for(int i=0;i<g[cur].size();i++) {
+            Line l=g[cur].get(i);
+            if(!r[l.d]) {
+                D_F_S(g,l.d,r); }
+        }
+    }
+    public static void main(String[] args) {
+        int n=6;
+        Main m= new Main();
+        ArrayList<Line> g[]=new ArrayList[n];
+        System.out.println("Adjacent List");
+        m.Adjacent_List(g);
+
+        int x[][]=new int[6][6];
+        Adjacent_Matrix am=new  Adjacent_Matrix ();
+        am.Initial(x);
+        am.Insert(x,1,4);
+        am.Insert(x,4,1);
+        am.Insert(x,2,4);
+        am.Insert(x,4,2);
+        am.Insert(x,2,5);
+        am.Insert(x,5,2);
+        am.Insert(x,4,5);
+        am.Insert(x,5,4);
+        am.Insert(x,3,5);
+        am.Insert(x,5,3);
+        System.out.println("Adjacent Matrix");
+        am.Print(x);
+
+        System.out.println("BFS");
+        m.Breadth_F_S(g);
+
+        System.out.println("DFS");
+        m.D_F_S(g,1,new boolean[n]);
+    }
+}
+class Adjacent_Matrix {
+    public void Initial(int x[][]) {
+        int s=x.length;
+        for(int i=1;i<x.length;i++) {
+            for(int j=1;j<x.length;j++) {
+                x[i][j]=0; }
+        }
+    }
+    public void Insert(int a[][],int x,int y){
+        for(int i=1;i<a.length;i++) {
+            for(int j=1;j<a.length;j++){
+                if(i==x&&j==y){
+                    a[i][j]=1;
+                    break; } }
+        }
+    }
+    public void Print(int a[][]) {
+        for(int i=1;i<a.length;i++) {
+            for(int j=1;j<a.length;j++) {
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
+    }
+}

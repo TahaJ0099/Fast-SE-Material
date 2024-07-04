@@ -1,0 +1,122 @@
+import java.util.*;
+public class Main {
+    int[] arr ;
+    int size=0;
+    int max;
+    Main(int data){
+        arr = new int[data];
+        max = data;
+    }
+    public int parent(int child){
+        return child/2;
+    }
+    public void swap(int ind1,int ind2){
+        int temp = arr[ind1];
+        arr[ind1] = arr[ind2];
+        arr[ind2] = temp;
+    }
+    public void insertingMinheap(int data){
+        if (size>max){
+            return;
+        }
+        int curr = ++size;
+        arr[curr] = data;
+        while (arr[curr]<arr[parent(curr)]){
+            swap(curr,parent(curr));
+            curr = parent(curr);
+        }
+    }
+    public void insertMax(int data){
+        if (size>max){
+            return;
+        }
+        int curr = ++size;
+        arr[curr] = data;
+        while (arr[curr]>arr[parent(curr)]){
+            swap(curr,parent(curr));
+            curr = parent(curr);
+        }
+    }
+    public void deletemin(){
+        System.out.println("Deleting "+arr[1]);
+        arr[1] = arr[size];
+        size--;
+        heappify(1,arr.length);
+
+    }
+    public void heappify(int s,int n){
+        int left = 2 * s;
+        int right = (2 * s) +1;
+        int curr = 0;
+        if (n>left && arr[left]<arr[s]){
+            curr = left;
+        }else if (n>right && arr[right] < arr[s]){
+            curr = left;
+        }
+        if (curr!=0){
+            int temp = arr[s];
+            arr[s] = arr[curr];
+            arr[curr] = temp;
+            heappify(curr,n);
+        }
+    }
+    public void printing(){
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]+"->");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Main h1 = new Main(10);
+        System.out.println("Enter numbers : ");
+        h1.insertingMinheap(sc.nextInt());
+        h1.insertingMinheap(sc.nextInt());
+        h1.insertingMinheap(sc.nextInt());
+        h1.insertingMinheap(sc.nextInt());
+        h1.insertingMinheap(sc.nextInt());
+        h1.insertingMinheap(sc.nextInt());
+        h1.insertingMinheap(sc.nextInt());
+        h1.printing();
+        h1.deletemin();
+        h1.printing();
+//        ===============================
+        Main h2 = new Main(10);
+        h2.insertMax(sc.nextInt());
+        h2.insertMax(sc.nextInt());
+        h2.insertMax(sc.nextInt());
+        h2.insertMax(sc.nextInt());
+        h2.insertMax(sc.nextInt());
+        h2.printing();
+        h2.deletemin();
+        h2.printing();
+        System.out.println("\n==============================");
+        h1.mintomaxheap(7);
+        h1.printing();
+        System.out.println("\nin max heap");
+        h1.maxtominheap(7);
+        h1.printing();
+    }
+    public void mintomaxheap(int i){
+        if (i<0){
+            return;
+        }
+        int curr = i;
+        while (arr[curr]>arr[parent(curr)]){
+            swap(curr,parent(curr));
+            curr = parent(curr);
+        }
+        mintomaxheap(--i);
+    }////
+    public void maxtominheap(int i){
+        if (i<0){
+            return;
+        }
+        int curr = i;
+        while (arr[curr]<arr[parent(curr)]){
+            swap(curr,parent(curr));
+            curr = parent(curr);
+        }
+        maxtominheap(--i);
+    }
+
+}

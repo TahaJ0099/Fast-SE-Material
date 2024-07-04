@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+public class Main{
+    static class node{
+        double d;
+        node l,r;
+        node(double d){
+            this.d=d;
+        }
+    }
+    public static node insert(node root,double val){
+        if (root==null){
+            root=new node(val);
+            return root;
+        }
+        if(root.d>val){
+            root.l=insert(root.l,val);
+        }
+        else{
+            root.r=insert(root.r,val);
+        }
+        return root;
+    }
+    public static void inorder(node root){
+        if (root==null){
+            return ;
+        }
+        inorder(root.l);
+        System.out.print(root.d+"  ,  ");
+        inorder(root.r);
+    }
+    public static node delete(node root,double val){
+        if(root.d>val){
+            root.l=delete(root.l,val);
+        }
+        else if(root.d<val){
+            root.r=delete(root.r,val);
+        }
+        else{
+            if(root.l==null&&root.r==null){
+                return null;
+            }
+            if(root.l==null){
+                return root.r;
+            }
+            else if(root.r==null){
+                return root.l;
+            }
+            node IS=inordersuccessor(root.r);
+            root.d=IS.d;
+            root.r= delete(root.r, IS.d);
+        }
+        return root;
+    }
+    public static node inordersuccessor(node root){
+        while (root.l!=null){
+            root=root.l;
+        }
+        return root;
+    }
+    public static boolean search(node root,double key){
+        if (root==null){
+            return false;
+        }
+        if (root.d>key){
+            return search(root.l,key);
+        }
+        else if(root.d==key){
+            return true;
+        }
+        else {
+            return search(root.r,key);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter size");
+        int n= sc.nextInt();
+        double v[]=new double[n];
+        System.out.println("enter val in array");
+        for (int i=0;i<n;i++){
+            v[i]= sc.nextDouble();
+        }
+     //   double values[]={5,1,3,3.5,4,4.5,2,7,8,9,10,11,12,13,14};
+        node root=null;
+        for (int i=0;i<n;i++){
+            root=insert(root,v[i]);
+        }
+        System.out.println("Insertion :");
+        inorder(root);
+        System.out.println("\n");
+        System.out.println("Deletion of 3 :");
+        delete(root,3);
+        inorder(root);
+        System.out.println("\n");
+        System.out.println("Deletion of 5 :");
+        delete(root,5);
+        inorder(root);
+        System.out.println();
+        System.out.println("search :");
+        if (search(root,3.5)){
+            System.out.println("found");
+        }else{
+            System.out.println("not found");
+        }
+    } }

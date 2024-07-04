@@ -1,0 +1,87 @@
+import java.util.*;
+class Queue_array{
+    private static int f,t,cap;
+    private static int arr[];
+    Queue_array(int maxsize) {
+        f=t=0;
+        cap=maxsize;
+        arr=new int[cap]; }
+    boolean enqueue(){
+        Scanner s=new Scanner(System.in);
+        if(cap==t){
+            System.out.printf("\nQueue is full\n");
+            return false; }
+        else{
+            System.out.println("Enter value");
+            int val=s.nextInt();
+            arr[t]=val;
+            t++; }
+        return true;
+    }
+    boolean dequeue(){
+        if(f==t){
+            System.out.printf("\nQueue is empty\n");
+            return false; }
+        else{
+            for(int i=0;i<t-1;i++){
+                arr[i]=arr[i+1];}
+            if(t<cap)
+                arr[t]=0;
+            t--; }
+        return true;
+    }
+    void display(){
+        int i;
+        if(f==t){
+            System.out.printf("Queue is Empty\n");
+            return; }
+        for (i=f;i<t;i++){
+            System.out.printf(""+arr[i]); }
+        return;
+    }
+    boolean front(){
+        if(f==t){
+            System.out.printf("Queue is Empty\n");
+            return false; }
+        System.out.printf(""+arr[f]);
+        return true;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in);
+        Queue_array q=new Queue_array(10);
+        int c=0;
+        while(c!=2){
+            System.out.println("1.Enqueue \n2.Deque\n3.Front");
+            System.out.println("Enter your choice ");
+            c=sc.nextInt();
+            switch(c){
+                case 1: {
+                    q.enqueue();
+                    System.out.println(" ");
+                    q.display();
+                    System.out.println(" ");
+                    break;
+                }
+                case 2:{
+                    q.dequeue();
+                    System.out.println(" ");
+                    q.display();
+                    System.out.println(" ");
+                    break;
+                }
+                case 3:{
+                    q.front();
+                    System.out.println(" ");
+                    q.display();
+                    System.out.println(" ");
+                    break;
+                }
+                default:{
+                    System.out.println("Please Enter valid choice ");
+                }
+            }
+        }
+    }
+}

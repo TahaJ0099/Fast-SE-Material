@@ -1,0 +1,163 @@
+class node{
+    int d,h;
+    node l,r;
+    node() {
+        h=1;
+    }
+}
+class Avl{
+    node root;
+    public int height(node root){
+        if(root==null) {
+            return 0;}
+        return root.h;
+    }
+    public int max(int a,int b){
+        if(a>b){
+            return a; }
+        else{
+            return b; }
+    }
+    public node rotate_right(node root){
+        node mid=root.l;
+        node q=mid.r;
+        mid.r=root;
+        root.l=q;
+        root.h=max(height(root.l),height(root.r))+1;
+        mid.h=max(height(mid.l),height(mid.r))+1;
+        return mid;
+    }
+    public node rotate_left(node root){
+        node mid=root.r;
+        node t=mid.l;
+        root.r=t;
+        mid.l=root;
+        root.h=max(height(root.l),height(root.r))+1;
+        mid.h=max(height(mid.l),height(mid.r))+1;
+        return mid;
+    }
+    public int BF(node root){
+        if(root==null){
+            return 0; }
+        return height(root.l)-height(root.r);
+    }
+    public node insert(node root, int val){
+        if(root==null){
+            node z=new node();
+            z.d=val;
+            root=z;
+            return root; }
+        if(root.d>val){
+            root.l=insert(root.l,val); }
+        else if(root.d<val){
+            root.r=insert(root.r,val); }
+        else{
+            return root; }
+        root.h=1+max(height(root.l),height(root.r));
+        int bal=BF(root);
+        if(bal>1&&val<root.l.d){
+            return rotate_right(root); }
+        if(bal<-1&&val>root.r.d){
+            return rotate_left(root); }
+        if(bal>1&&val>root.l.d){
+            root.l=rotate_left(root.l);
+            return rotate_right(root); }
+        if(bal<-1&&val<root.r.d){
+            root.r=rotate_right(root.r);
+            return rotate_left(root); }
+        return root;
+    }
+    public void inorder(node root){
+        if(root==null){
+            return; }
+        inorder(root.l);
+        System.out.print(root.d+" , ");
+        inorder(root.r);
+    }
+    public node delete(node root,int val){
+        if(root==null){
+            return null; }
+        else if(root.d>val){
+            root.l=delete(root.l,val); }
+        else if(root.d<val){
+            root.r=delete(root.r,val); }
+        else{
+            if(root.l==null){
+                return root.r; }
+            if(root.r==null){
+                return root.l; }
+            root.d=InorderSuccessor(root.r);
+            root.r=delete(root.r,root.d); }
+        if(root==null){
+            return root; }
+        root.h=1+max(height(root.l),height(root.r));
+        int bal=BF(root);
+        if(bal>1&&root.l.d<0){
+            return rotate_right(root); }
+        else if(bal<-1&&root.r.d>0){
+            return rotate_left(root); }
+        else if(bal>1&&root.l.d>0){
+            root.l=rotate_left(root.l);
+            return rotate_right(root); }
+        else if(bal<-1&&root.r.d<0){
+            root.r=rotate_right(root.r);
+            return rotate_left(root); }
+        return root;
+    }
+    public int InorderSuccessor(node root){
+        int s=root.d;
+        while(root.l!=null){
+            s=root.l.d;
+            root=root.l; }
+        return s;
+    }
+    //////////////////////////
+    public boolean found(node root,int val){
+        if(root==null){
+            return false; }
+        else if(root.d==val){
+            return true; }
+        else if(root.d>val){
+            return found(root.l,val); }
+        else{
+            return found(root.r,val); }
+    }
+    public void Searching(node root, int val) {
+        if(found(root,val)==true){
+            System.out.println("node found"); }
+        else{
+            System.out.println("node not found"); }
+    }
+
+}
+public class Main {
+    public static void main(String[] args) {
+        Avl x=new Avl();
+        node root=null;
+        root=x.insert(root, 55);
+        root=x.insert(root, 66);
+        root=x.insert(root, 77);
+        root=x.insert(root, 11);
+        root=x.insert(root, 33);
+        root=x.insert(root, 22);
+        root=x.insert(root, 35);
+        root=x.insert(root, 25);
+        root=x.insert(root, 44);
+        root=x.insert(root, 88);
+        root=x.insert(root, 99);
+        x.inorder(root);
+        System.out.println();
+        System.out.println("Tree after removing 35 :");
+        root=x.delete(root, 35);
+        x.inorder(root);
+        System.out.println();
+        System.out.println("Tree after removing 99 :");
+        root=x.delete(root, 99);
+        x.inorder(root);
+        System.out.println();
+        System.out.println("search");
+        x.Searching(root,66);
+        x.Searching(root,22);
+        x.Searching(root, 44);
+
+    }   }

@@ -1,0 +1,84 @@
+import java.util.*;
+
+class StackUsingLinkedlist {
+
+    class Node {
+
+        int data;
+        Node link;
+    }
+
+    Node top = null;
+
+    public void push(int x) {
+        Node temp = new Node();
+        if (temp == null) {
+            System.out.print("\nHeap Overflow");
+            return;
+        }
+        temp.data = x;
+        temp.link = top;
+
+        top = temp;
+    }
+
+    public int peek() {
+        if (top!=null) {
+            return top.data;
+        } else {
+            System.out.println("Stack is empty");
+           return -1 ;
+        }
+    }
+
+    public void pop() {
+
+        if (top == null) {
+            System.out.print("\nStack Underflow");
+            return;
+        } else {
+            top = (top).link;
+        }
+    }
+
+    public void display() {
+
+        if (top == null) {
+            System.out.printf("\nStack Underflow");
+
+        } else {
+            Node temp = top;
+            while (temp != null) {
+
+                System.out.print(temp.data);
+
+                temp = temp.link;
+                System.out.println(" ");
+            }
+        }
+    }
+}
+
+class ank {
+
+    public static void main(String[] args) {
+
+        StackUsingLinkedlist obj = new StackUsingLinkedlist();
+
+        obj.push(11);
+        obj.push(22);
+        obj.push(33);
+        obj.push(44);
+        obj.push(12);
+        obj.display();
+
+        System.out.printf("\nTop element is %d\n",
+                obj.peek());
+
+        System.out.println("After Pop ");
+        obj.pop();
+
+        obj.display();
+
+    }
+}

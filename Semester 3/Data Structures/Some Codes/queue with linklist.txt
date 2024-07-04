@@ -1,0 +1,51 @@
+class q_ll{
+    private Node f,r;
+    private int q_s;
+    private class Node{
+        int d;
+        Node n; }
+    public q_ll(){
+        f=null;
+        r=null;
+        q_s=0;
+    }
+    public boolean isNull(){
+        return (q_s==0); }
+    public int de_q(){
+        int d=f.d;
+        f=f.n;
+        if(isNull()){
+            r=null; }
+        q_s--;
+        System.out.println("Element " + d+ " removed from the queue");
+        return d;
+    }
+    public void en_q(int d){
+        Node old_r=r;
+        r=new Node();
+        r.d=d;
+        r.n=null;
+        if(isNull()){
+            f=r; }
+        else {
+            old_r.n=r; }
+        q_s++;
+    }
+    public void display(){
+        System.out.println(f.d+" "+r.d);
+    }
+}
+class Main{
+    public static void main(String a[]){
+        q_ll q=new q_ll();
+        q.en_q(6);
+        q.en_q(3);
+        q.display();
+        q.en_q(12);
+        q.en_q(24);
+        q.de_q();
+        q.de_q();
+        q.en_q(9);
+        q.display();
+    }
+}
