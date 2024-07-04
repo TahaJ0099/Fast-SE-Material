@@ -1,0 +1,5 @@
+The prototype for our system travel management system is designed through java. The implementation 
+for making the prototype was to give the idea about our project that how it will look as a 
+conceptual design.
+
+Thanks :) 
