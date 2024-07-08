@@ -1,0 +1,81 @@
+One way Communication
+
+Client:
+
+import socket
+
+s = socket.socket()
+s.connect(('localhost', 9988))
+print("Connected to server")
+
+while True:
+    message = input("Enter message to send to server (type 'exit' to quit): ")
+   
+    if message.lower() == 'exit':
+        break
+   
+    s.send(bytes(message, 'utf-8'))
+
+s.close()
+
+Server:
+
+
+import socket
+
+s = socket.socket()
+print("Socket Created")
+
+s.bind(('localhost', 9988))
+
+s.listen(5)
+
+print("Waiting for connection")
+
+while True:
+    c, addr = s.accept()
+    print("Got connection from", addr)
+
+    while True:
+        message = c.recv(1024).decode()
+        if not message:
+            break
+        print(f"Client ({addr}): {message}")
+
+    c.close()
+
+Two Way Communication:
+
+Client:
+
+import socket
+s = socket.socket()
+s.connect(('localhost', 8830))
+print("Server has Connected")
+while True:
+    message = input("Enter message: ")
+    s.send(bytes(message, 'utf-8'))
+    data = s.recv(1024)
+    print("Message Received from server:", data.decode())
+s.close()
+
+Server:
+
+
+import socket
+s = socket.socket()
+print("Socket Has Created")
+s.bind(('localhost', 8830))
+s.listen(5)
+print("Waiting for connection")
+while True:
+    c, addr = s.accept()
+    print("Got connection from", addr)
+    while True:
+        data = c.recv(1024)
+        if not data:
+            break
+        print("Received from client:", data.decode())
+        message = input("Enter response message: ")
+        c.send(bytes(message, 'utf-8'))
+    c.close()
