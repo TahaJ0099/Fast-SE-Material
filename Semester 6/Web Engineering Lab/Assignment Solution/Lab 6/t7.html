@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+    <title>www.tahajawaid.com|Task_07</title>
+  <style>
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="submit"] {
+        background-color: blue;
+        -webkit-text-fill-color: white;
+      margin-top: 20px;
+      font-size: 16px;
+      padding: 10px;
+    }
+    .error {
+      color: black;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body style="background-color: yellow;">
+  <h1>Sign Up </h1>
+    <form id="signup-form" onsubmit="return validateForm()">
+      <label>Name:</label>
+      <input type="text" id="name" name="name" required>
+      <span class="error" id="name-error"></span>
+
+      <label>Contact:</label>
+      <input type="text" id="contact" name="contact" required>
+      <span class="error" id="contact-error"></span>
+
+      <label>Email:</label>
+      <input type="email" id="email" name="email" required>
+      <span class="error" id="email-error"></span>
+
+      <label>Password:</label>
+      <input type="password" id="password" name="password" required>
+      <span class="error" id="password-error"></span>
+
+      <label>Gender:</label>
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="male" required>
+      <label for="female">Female</label>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="other">Other</label>
+      <input type="radio" id="other" name="gender" value="other">
+      <span class="error" id="gender-error"></span>
+
+      <label>Field:</label>
+      <label for="sports">AI</label>
+      <input type="checkbox" id="sports" name="interests" value="sports">
+      <label for="music">Devops</label>
+      <input type="checkbox" id="music" name="interests" value="music">
+      <label for="movies">Data Science</label>
+      <input type="checkbox" id="movies" name="interests" value="movies">
+      <span class="error" id="interests-error"></span>
+        <br>
+      <input type="submit" value="Sign Up">
+    </form>
+    <script>
+      function validateForm() {
+        let name = document.getElementById("name").value;
+        let contact = document.getElementById("contact").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let gender = document.querySelector('input[name="gender"]:checked');
+        let interests = document.querySelectorAll('input[name="interests"]:checked');
+
+        let nameRegex = /^[a-zA-Z ]+$/;
+        let contactRegex = /^[0-9]{11}$/;
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
+        let isValid = true;
+
+        if (!nameRegex.test(name)) {
+          document.getElementById("name-error").textContent = "Please enter a valid name.";
+          isValid = false;
+        } else {
+          document.getElementById("name-error").textContent = "";
+        }
+
+if (!contactRegex.test(contact)) {
+  document.getElementById("contact-error").textContent = "Please enter a valid contact number.";
+  isValid = false;
+} else {
+  document.getElementById("contact-error").textContent = "";
+}
+
+if (!emailRegex.test(email)) {
+  document.getElementById("email-error").textContent = "Please enter a valid email address.";
+  isValid = false;
+} else {
+  document.getElementById("email-error").textContent = "";
+}
+
+if (!passwordRegex.test(password)) {
+  document.getElementById("password-error").textContent = "Password must contain at least 8 characters including 1 uppercase letter, 1 lowercase letter and 1 number.";
+  isValid = false;
+} else {
+  document.getElementById("password-error").textContent = "";
+}
+
+if (!gender) {
+  document.getElementById("gender-error").textContent = "Please select your gender.";
+  isValid = false;
+} else {
+  document.getElementById("gender-error").textContent = "";
+}
+
+if (interests.length == 0) {
+  document.getElementById("interests-error").textContent = "Please select at least one interest.";
+  isValid = false;
+} else {
+  document.getElementById("interests-error").textContent = "";
+}
+
+return isValid;
+}
+</script>
+
+  
+</body>
+</html>

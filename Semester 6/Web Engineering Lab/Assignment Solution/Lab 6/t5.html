@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>www.tahajawaid.com|Task_05</title>
+</head>
+<body>
+    <Label for="Check">Enter a string:</Label>
+    <input type="text" id="Check">
+    <button onclick="check()">Check</button>
+    <script>
+        function check(){
+            var x=document.getElementById('Check').value;
+            var rev=x.split('').reverse().join('');
+            if(rev==x){
+            document.write("<h5>"+x+"=PALINDROME</h5>")
+            }else{
+            document.write("<h5>"+x+"=NOT A PALINDROME</h5>")
+            }    
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+  <head>
+    <title>www.tahajawaid.com|Task_06</title>
+  </head>
+  <body>
+    <h1>Sign Up Page</h1>
+    <form>
+      <label for="name">Full_Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="email">Email_Address:</label>
+      <input type="email" id="email" name="email"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <div id="DOM"></div>
+    <script>
+      function displayOutput() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        document.getElementById("DOM").innerHTML = "<h3>Name = " + name + "<br>Email = " + email + "<br>Password = " + password+"</h3>"; }
+      document.querySelector('form').onsubmit = function(e){
+        e.preventDefault();
+        displayOutput();
+      }
+    </script>
+  </body>
+</html>
