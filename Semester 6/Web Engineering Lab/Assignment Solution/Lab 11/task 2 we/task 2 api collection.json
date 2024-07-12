@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "78256c80-9005-41ec-9dad-04de95ce29cc",
+		"name": "task 2 api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31313212"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ali",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ali@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/lab%2011/api.php?action=create-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab%2011",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "create-user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "log in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "taha@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/lab%2011/api.php?action=login-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab%2011",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "login-user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user-id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/lab%2011/api.php?action=get-user-details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab%2011",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "get-user-details"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/lab%2011/api.php?action=get-products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab%2011",
+						"api.php"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "get-products"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
